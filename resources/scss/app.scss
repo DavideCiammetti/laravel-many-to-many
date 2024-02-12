@@ -1,0 +1,22 @@
+@import "~bootstrap/scss/bootstrap";
+.height-overflow{
+    height: 80px;
+    overflow: auto;
+}
+.font-s-12-w-60{
+    font-size: 12px;
+    width: 60px;
+}
+label{
+    display: none;
+}
+.bg-col-g-800{
+    background-color: #3e504e;
+}
+.border-danger-b{
+    border: 2px solid #7a0000;
+    outline: none;
+}
+.button-create{
+    background-color: #5a0000;
+}
