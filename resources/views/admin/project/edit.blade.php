@@ -5,7 +5,7 @@
         <div class="mt-3 mb-3">
             <h3 class="text-white">MODIFY PROJECT</h3>
         </div>
-        <form action="{{route('admin.projects.update', $project->slug)}}" method="POST">
+        <form action="{{route('admin.projects.update', $project->slug)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             {{-- title --}}
@@ -29,14 +29,20 @@
                     <input type="text" name="staff" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded" id="staffInput" value="{{$project->staff}}" placeholder="collaborators">
                 </div>
                 {{-- img --}}
-                <div class="mb-1">
+                {{-- <div class="mb-1">
                     <label for="imageInput" class="border rounded">Immage</label>
                     <input type="text" name="img" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('img') is-invalid @enderror" value="{{$project->img}}" id="imageInput" placeholder="img">
-                </div>
+                </div> --}}
+                <div class="mb-1">
+                    <label for="formFile" class="border rounded">Immage</label>
+                    <input class=" col-8 border-danger-b rounded @error('img') is-invalid @enderror" name="img" value="{{$project->img}}" type="file" id="formFile" placeholder="choose img">
+                  </div>
+                  
                 @error('img')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+            {{-- type --}}
             <div class="mb-3 col-12">
                 <select class=" ps-2 pt-1 pb-1 col-8 border-danger-b rounded" aria-label="Default select example" name="type_id">
                     @foreach ( $type as $types )

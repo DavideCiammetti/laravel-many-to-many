@@ -13,7 +13,7 @@
             </div>
             <hr class="border border-danger border-2 opacity-100">
             <div>
-                immagine {{$project->img}}
+                <img src="{{asset('storage/' . $project->img)}}" alt="img">
             </div>
             <hr class="border border-danger border-2 opacity-100">
             <div>

@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Tecnology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -42,8 +43,10 @@ class ProjectController extends Controller
 
         $project->fill($data);
         $project->slug = Str::of($project->title)->slug('-');
+        $project->img = Storage::put('uploads',$data['img']);
 
         $project->save();
+        
         // prendo tecnologies se settato
         if(isset($data['tecnologies'])){
             $project->tecnologies()->sync($data['tecnologies']);
@@ -56,12 +59,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        // $project = Project::where('slug', $slug)->first();
-        // dd($project);
-
-        // $data = [
-        //     'project'=> $project,
-        // ];
         return view('admin.project.show', compact('project'));
     }
 
@@ -81,8 +78,8 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-
         $data['slug'] = Str::slug($data['title'], '-');
+        $project->img = Storage::put('uploads',$data['img']);
         $project->update($data);
         
         // aggiorno elemento tecnologies

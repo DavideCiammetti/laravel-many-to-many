@@ -5,7 +5,7 @@
     <div class="mt-3 mb-3">
         <h3 class="text-white">CREATE A PROJECT</h3>
     </div>
-    <form action="{{route('admin.projects.store')}}" method="POST">
+    <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         {{-- title --}}
             <div class=" mb-3">
@@ -28,14 +28,19 @@
                 <input type="text" name="staff" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded" id="staffInput" value="{{old('staff')}}" placeholder="collaborators">
             </div>
             {{-- img --}}
-            <div class="mb-1">
+            {{-- <div class="mb-1">
                 <label for="imageInput" class="border rounded">Immage</label>
                 <input type="text" name="img" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('img') is-invalid @enderror" value="{{old('img')}}" id="imageInput" placeholder="img" required>
-            </div>
+            </div> --}}
+            <div class="mb-1">
+                <label for="formFile" class="border rounded">Immage</label>
+                <input class=" col-8 border-danger-b rounded @error('img') is-invalid @enderror" name="img" value="{{old('img')}}" type="file" id="formFile" placeholder="choose img">
+              </div>
             @error('img')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+        {{-- type --}}
         <div class="mb-3 col-12">
             <select class=" ps-2 pt-1 pb-1 col-8 border-danger-b rounded" aria-label="Default select example" name="type_id">
                 @foreach ( $type as $types )
@@ -43,6 +48,7 @@
                 @endforeach
             </select>
         </div>
+        {{-- tecnologies --}}
        <div class="mb-3">
             <div>
                 <p class="fs-5 text-black">Tecnologies</p>

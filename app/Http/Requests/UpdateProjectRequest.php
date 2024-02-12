@@ -25,7 +25,7 @@ class UpdateProjectRequest extends FormRequest
             'title'=> 'required|max:100|min:5',
             'description'=> 'nullable',
             'staff'=> 'nullable',
-            'img'=> 'required',
+            'img'=> ['nullable','image', 'max:2048'],
             'slug'=> 'nullable',
             'tecnologies'=> ['nullable', 'exists:tecnologies,id'],
         ];
@@ -35,7 +35,7 @@ class UpdateProjectRequest extends FormRequest
             'title.required'=> 'il titolo è obbligatorio',
             'title.max'=> 'massimo 100 caratteri',
             'title.min'=> 'minimo 5 caratteri',
-            'img.required'=> 'campo obbligatorio',
+            'img.max'=> 'il file puo pesare messimo 2 mega',
             'tecnologies.exists'=> 'il campo tecnology è errato',
         ];
     }
