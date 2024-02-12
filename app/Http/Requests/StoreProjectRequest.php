@@ -29,6 +29,7 @@ class StoreProjectRequest extends FormRequest
             'img'=> 'required',
             'slug'=> 'nullable',
             'type_id'=> ['nullable', 'exists:types,id'],
+            'tecnologies'=> ['nullable', 'exists:tecnologies,id'],
         ];
     }
     public function message(){
@@ -39,6 +40,7 @@ class StoreProjectRequest extends FormRequest
             'title.min'=> 'minimo 5 caratteri',
             'img.required'=> 'campo obbligatorio',
             'type_id.exists'=> 'il campo type è errato',
+            'tecnologies.exists'=> 'il campo tecnology è errato',
         ];
     }
 }

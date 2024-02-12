@@ -43,6 +43,17 @@
                 @endforeach
             </select>
         </div>
+       <div class="mb-3">
+            <div>
+                <p class="fs-5 text-black">Tecnologies</p>
+            </div>
+            @foreach ($tecnology as $tecnologies)
+                <div class="form-check form-check-inline">
+                        <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$tecnologies->title}}</label>
+                        <input class="form-check-input" type="checkbox" name="tecnologies[]" value="{{$tecnologies->id}}">
+                </div>
+            @endforeach
+       </div>
         <div class="col-12">
             <button type="submit" class="border-0 ps-2 pe-2 pb-1 pt-1 text-white button-create">Sign in</button>
         </div>

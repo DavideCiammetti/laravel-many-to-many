@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Tecnology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -27,7 +28,8 @@ class ProjectController extends Controller
     public function create()
     {
         $type = Type::all();
-        return view('admin.project.create', compact('type'));
+        $tecnology = Tecnology::all();
+        return view('admin.project.create', compact('type', 'tecnology'));
     }
 
     /**
@@ -42,6 +44,10 @@ class ProjectController extends Controller
         $project->slug = Str::of($project->title)->slug('-');
 
         $project->save();
+        
+        if(isset($data['tecnologies'])){
+            $project->tecnologies()->sync($data['tecnologies']);
+        }
         return redirect()->route('admin.projects.show', $project->slug);
     }
 
