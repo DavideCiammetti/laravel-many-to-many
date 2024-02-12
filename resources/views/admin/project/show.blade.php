@@ -19,6 +19,17 @@
             <div>
                 <p> Categoria: {{$project->type?->name}}</p>
             </div>
+            <hr class="border border-danger border-2 opacity-100">
+            <div>
+                <p>tecnologies: </p>
+                <ul>
+                    @foreach ($project->tecnologies as $tecnology)
+                        <li>
+                            {{$tecnology->title}}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
       </div>
 @endsection

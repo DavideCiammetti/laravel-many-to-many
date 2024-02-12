@@ -10,7 +10,7 @@
         {{-- title --}}
             <div class=" mb-3">
                 <label for="inputEmail4" class="border rounded">Title</label>
-                <input type="text" name="title" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="title" id="inputEmail4">
+                <input type="text" name="title" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="title" id="inputEmail4" required>
             </div>
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -30,7 +30,7 @@
             {{-- img --}}
             <div class="mb-1">
                 <label for="imageInput" class="border rounded">Immage</label>
-                <input type="text" name="img" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('img') is-invalid @enderror" value="{{old('img')}}" id="imageInput" placeholder="img">
+                <input type="text" name="img" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('img') is-invalid @enderror" value="{{old('img')}}" id="imageInput" placeholder="img" required>
             </div>
             @error('img')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -50,7 +50,8 @@
             @foreach ($tecnology as $tecnologies)
                 <div class="form-check form-check-inline">
                         <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$tecnologies->title}}</label>
-                        <input class="form-check-input" type="checkbox" name="tecnologies[]" value="{{$tecnologies->id}}">
+                        <input class="form-check-input" type="checkbox" name="tecnologies[]" value="{{$tecnologies->id}}" 
+                        {{in_array($tecnologies->id, old('tecnologies', []))? 'checked': ''}}>
                 </div>
             @endforeach
        </div>

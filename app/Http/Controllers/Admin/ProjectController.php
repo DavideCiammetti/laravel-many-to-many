@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $project->slug = Str::of($project->title)->slug('-');
 
         $project->save();
-        
+
         if(isset($data['tecnologies'])){
             $project->tecnologies()->sync($data['tecnologies']);
         }
