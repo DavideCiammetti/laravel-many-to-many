@@ -27,6 +27,7 @@ class UpdateProjectRequest extends FormRequest
             'staff'=> 'nullable',
             'img'=> 'required',
             'slug'=> 'nullable',
+            'tecnologies'=> ['nullable', 'exists:tecnologies,id'],
         ];
     }
     public function message(){
@@ -35,7 +36,7 @@ class UpdateProjectRequest extends FormRequest
             'title.max'=> 'massimo 100 caratteri',
             'title.min'=> 'minimo 5 caratteri',
             'img.required'=> 'campo obbligatorio',
-            // 'img.image'=>'formato errato',
+            'tecnologies.exists'=> 'il campo tecnology è errato',
         ];
     }
 }

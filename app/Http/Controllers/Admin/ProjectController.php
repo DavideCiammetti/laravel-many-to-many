@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $project->slug = Str::of($project->title)->slug('-');
 
         $project->save();
-
+        // prendo tecnologies se settato
         if(isset($data['tecnologies'])){
             $project->tecnologies()->sync($data['tecnologies']);
         }
@@ -71,7 +71,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $type = Type::all();
-        return view('admin.project.edit', compact('project', 'type'));
+        $tecnology = Tecnology::all();
+        return view('admin.project.edit', compact('project', 'type', 'tecnology'));
     }
 
     /**
@@ -83,7 +84,13 @@ class ProjectController extends Controller
 
         $data['slug'] = Str::slug($data['title'], '-');
         $project->update($data);
-
+        
+        // aggiorno elemento tecnologies
+        if(isset($data['tecnologies'])){
+            $project->tecnologies()->sync($data['tecnologies']);
+        }else{
+            $project->tecnologies()->sync([]);
+        }
         return redirect()->route('admin.projects.show', $project);
     }
 
@@ -92,6 +99,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        // elimino elemento tecnologies
+        $project->tecnologies()->sync([]);
+        // elimino progetto
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "$project->title");
     }
