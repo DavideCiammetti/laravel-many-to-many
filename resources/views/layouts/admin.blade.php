@@ -66,7 +66,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.projects.index') }}">
-                                    <i class="fa-solid fa-list me-2"></i> list
+                                    <i class="fa-solid fa-list me-2"></i>project list
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -78,9 +78,16 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.types.create') }}">
-                                    <i class="fa-solid fa-plus me-2"></i>Add types
+                                    <i class="fa-solid fa-plus me-2"></i>Add type
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white "
+                                    href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-solid fa-list me-2"></i> Technology list
+                                </a>
+                            </li>
+                            
                         </ul>
 
 

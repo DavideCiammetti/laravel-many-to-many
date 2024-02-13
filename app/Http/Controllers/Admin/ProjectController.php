@@ -79,7 +79,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['title'], '-');
+        $project->slug = Str::of($data['title'])->slug('-');
         // gestione immagini 
         // $project->img = Storage::put('uploads',$data['img']);
         $project->update($data);

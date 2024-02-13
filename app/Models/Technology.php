@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Technology extends Model
 {
     use HasFactory;
+    protected $guarded = ['slug'];
      // collegamento projects
      public function projects(){
         return $this->belongsToMany(Project::class);
