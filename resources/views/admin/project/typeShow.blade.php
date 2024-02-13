@@ -13,8 +13,13 @@
         </div>
     </div>
     @endif
-    <div class="card mt-5">
+      <div class="card mt-5">
         <div class="card-body">
-            <h2>{{$type->name}}</h2>
+            <h4>name:</h4>
+            <h3>{{$type->name}}</h3>
+            <hr class="border border-danger border-2 opacity-100">
+            <p>slug:</p>
+            <p>{{$type->slug}}</p>
+        </div>
       </div>
 @endsection

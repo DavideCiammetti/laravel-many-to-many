@@ -6,7 +6,12 @@
     <form class="mt-5" action="{{route('admin.types.store')}}" method="POST">
         @csrf
         <label for="typesText">Type</label>
-        <input type="text" name="name" id="typesText" placeholder="Type">
+        <input type="text" class="@error('name') is-invalid @enderror" name="name" id="typesText" placeholder="Type">
         <button type="submit">send</button>
+        <div class="mt-3">
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
     </form>
 @endsection
