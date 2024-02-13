@@ -11,6 +11,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Mockery\Undefined;
 
 class ProjectController extends Controller
 {
@@ -44,10 +45,14 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::of($project->title)->slug('-');
         // gestione immagini 
-        // $project->img = Storage::put('uploads',$data['img']);
-
-        $project->save();
         
+        if(isset($data['img'])){
+            $project->img = Storage::put('uploads',$data['img']);
+        }else{
+            $project->img = 'img';
+        }
+        
+        $project->save();
         // prendo technologies se settato
         if(isset($data['technologies'])){
             $project->technologies()->sync($data['technologies']);
@@ -81,7 +86,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->slug = Str::of($data['title'])->slug('-');
         // gestione immagini 
-        // $project->img = Storage::put('uploads',$data['img']);
+        $project->img = Storage::put('uploads',$data['img']);
         $project->update($data);
         
         // aggiorno elemento technologies
