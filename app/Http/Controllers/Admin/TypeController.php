@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\updateTypeRequest;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,7 +16,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        // return view('admin.project.typeIndex');
+        $type = Type::all();
+        return view('admin.project.typeIndex', compact('type'));
     }
 
     /**
@@ -53,24 +55,29 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Type $type)
     {
-        //
+        return view('admin.project.typeEdit', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(updateTypeRequest $request, Type $type)
     {
-        //
+        $data = $request->validated();
+        $type->slug = Str::of($data['name'])->slug('-');
+        $type->update($data);
+        return redirect()->route('admin.types.show', $type->slug)->with('message', "$type->slug");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        $type_slug = $type->slug;
+        return redirect()->route('admin.types.index')->with('message', "$type_slug");
     }
 }

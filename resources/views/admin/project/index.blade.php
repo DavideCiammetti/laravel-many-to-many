@@ -54,7 +54,7 @@
                     {{ $projects->staff }}
                 </td>
                 {{-- button show, update, delete --}}
-                <td colspan="2" class="table-active">
+                <td colspan="2" class="table-active wid-100">
                     <div class=" d-flex flex-column align-items-center btn-group" role="group" aria-label="Basic mixed styles example">
                         {{-- show --}}
                         <button type="submit" class="font-s-12-w-60 border-0 text-bg-primary mb-1">
