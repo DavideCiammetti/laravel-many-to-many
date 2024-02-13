@@ -1,7 +1,8 @@
 @extends('layouts.admin')
-
-
 @section('content')
+    <div class="mt-3 mb-3">
+        <h3 class="text-white">LIST OF PROJECTS</h3>
+    </div>
     @if (session('message'))
         <div class="toast show mt-3 align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">

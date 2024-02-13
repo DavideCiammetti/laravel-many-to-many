@@ -1,6 +1,4 @@
 @extends('layouts.admin')
-
-
 @section('content')
     <div class="mt-3 mb-3">
         <h3 class="text-white">CREATE A PROJECT</h3>

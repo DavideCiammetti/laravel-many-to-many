@@ -44,15 +44,15 @@ class ProjectController extends Controller
 
         $project->fill($data);
         $project->slug = Str::of($project->title)->slug('-');
+
         // gestione immagini 
-        
         if(isset($data['img'])){
             $project->img = Storage::put('uploads',$data['img']);
         }else{
             $project->img = 'img';
         }
-        
         $project->save();
+
         // prendo technologies se settato
         if(isset($data['technologies'])){
             $project->technologies()->sync($data['technologies']);
@@ -86,7 +86,12 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->slug = Str::of($data['title'])->slug('-');
         // gestione immagini 
-        $project->img = Storage::put('uploads',$data['img']);
+         
+        if(isset($data['img'])){
+            $project->img = Storage::put('uploads',$data['img']);
+        }else{
+            $project->img = 'img';
+        }
         $project->update($data);
         
         // aggiorno elemento technologies
@@ -105,6 +110,7 @@ class ProjectController extends Controller
     {
         // elimino elemento technologies
         $project->technologies()->sync([]);
+        
         // elimino progetto
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "$project->title");

@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+    <div class="mt-3 mb-3">
+        <h3 class="text-white">EDIT TYPE</h3>
+    </div>
     <form class="mt-5" action="{{route('admin.types.update', $type->slug)}}" method="POST">
         @csrf
         @method('PUT')

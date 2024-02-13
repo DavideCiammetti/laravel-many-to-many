@@ -63,34 +63,46 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
+                            {{-- projects --}}
                             <li class="nav-item">
+                                <h4 class="text-danger">Projects</h4>
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-list me-2"></i>Project list
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item mb-4">
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.projects.create') }}">
                                     <i class="fa-solid fa-plus me-2"></i>Add project
                                 </a>
                             </li>
+                            {{-- types --}}
                             <li class="nav-item">
+                                <h4 class="text-danger">Types</h4>
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.types.index') }}">
                                     <i class="fa-solid fa-list me-2"></i> Type list
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item mb-4">
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.types.create') }}">
                                     <i class="fa-solid fa-plus me-2"></i>Add type
                                 </a>
                             </li>
+                            {{-- technologies --}}
                             <li class="nav-item">
+                                <h4 class="text-danger">Technologies</h4>
                                 <a class="nav-link text-white "
                                     href="{{ route('admin.technologies.index') }}">
                                     <i class="fa-solid fa-list me-2"></i> Technology list
+                                </a>
+                            </li>
+                            <li class="nav-item mb-4">
+                                <a class="nav-link text-white "
+                                    href="{{ route('admin.technologies.create') }}">
+                                    <i class="fa-solid fa-plus me-2"></i>Add Technology
                                 </a>
                             </li>
                         </ul>
