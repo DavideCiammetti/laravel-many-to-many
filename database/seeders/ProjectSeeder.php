@@ -33,12 +33,15 @@ class ProjectSeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
 
+            $type = Type::inRandomOrder()->first();
+
             $project = new project();
             $project->title = $faker->sentence(2);
             $project->description = $faker->text(500);
             $project->slug =  Str::of($project->title)->slug('-');
             $project->staff = $faker->name(1);
             $project->img = $faker->sentence(1);
+            $project->type_id = $type->id;
             $project->save();
         }
     }

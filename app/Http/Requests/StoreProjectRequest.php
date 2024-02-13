@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -30,17 +29,6 @@ class StoreProjectRequest extends FormRequest
             'slug'=> 'nullable',
             'type_id'=> ['nullable', 'exists:types,id'],
             'technologies'=> ['nullable', 'exists:technologies,id'],
-        ];
-    }
-    public function message(){
-        return  [
-            'title.unique'=> 'il titolo non può essere duplicato',
-            'title.required'=> 'il titolo è obbligatorio',
-            'title.max'=> 'massimo 100 caratteri',
-            'title.min'=> 'minimo 5 caratteri',
-            'img.max'=> 'il file puo pesare messimo 2 mega',
-            'type_id.exists'=> 'il campo type è errato',
-            'technologies.exists'=> 'il campo tecnology è errato',
         ];
     }
 }

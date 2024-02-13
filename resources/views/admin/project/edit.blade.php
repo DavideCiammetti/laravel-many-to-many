@@ -42,7 +42,7 @@
             <div class="mb-3 col-12">
                 <select class=" ps-2 pt-1 pb-1 col-8 border-danger-b rounded" aria-label="Default select example" name="type_id">
                     @foreach ( $type as $types )
-                        <option value="{{$types->id}}" @if (old('types_id', $project->type_id) == $types->id) selected @endif>{{$types->name}}</option>
+                        <option value="{{$types->id}}" @if (old('type_id', $project->type_id) == $types->id) selected @endif>{{$types->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -63,7 +63,6 @@
                             <input class="form-check-input" type="checkbox" name="technologies[]" value="{{$technologies->id}}" 
                             {{$project->technologies->contains($technologies->id)? 'checked': ''}}>
                         @endif
-                        {{-- @dd($technologies) --}}
                     </div>
                 @endforeach
            </div>

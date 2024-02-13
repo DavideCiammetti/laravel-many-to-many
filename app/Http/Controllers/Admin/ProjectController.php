@@ -59,8 +59,7 @@ class ProjectController extends Controller
      * Display the specified resource.
      */
     public function show(Project $project)
-    {
-
+    {   
         return view('admin.project.show', compact('project'));
     }
 
@@ -71,7 +70,6 @@ class ProjectController extends Controller
     {
         $type = Type::all();
         $technology = Technology::all();
-        // dd($technology);
         return view('admin.project.edit', compact('project', 'type', 'technology'));
     }
 
