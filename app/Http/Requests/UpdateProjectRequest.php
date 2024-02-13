@@ -22,7 +22,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=> 'required|max:100|min:5',
+            'title'=> ['unique:projects,title', 'required', 'max:100', 'min:5'],
             'description'=> 'nullable',
             'staff'=> 'nullable',
             'img'=> ['nullable','image', 'max:2048'],
@@ -33,6 +33,7 @@ class UpdateProjectRequest extends FormRequest
     public function message(){
         return  [
             'title.required'=> 'il titolo è obbligatorio',
+            'title.unique'=> 'il titolo non può essere duplicato',
             'title.max'=> 'massimo 100 caratteri',
             'title.min'=> 'minimo 5 caratteri',
             'img.max'=> 'il file puo pesare messimo 2 mega',

@@ -43,6 +43,7 @@ class ProjectController extends Controller
 
         $project->fill($data);
         $project->slug = Str::of($project->title)->slug('-');
+        // gestione immagini 
         $project->img = Storage::put('uploads',$data['img']);
 
         $project->save();
@@ -79,6 +80,7 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title'], '-');
+        // gestione immagini 
         $project->img = Storage::put('uploads',$data['img']);
         $project->update($data);
         

@@ -23,7 +23,7 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=> 'unique:projects|required|max:100|min:5',
+            'title'=> ['unique:projects,title', 'required', 'max:100', 'min:5'],
             'description'=> 'nullable',
             'staff'=> 'nullable',
             'img'=> ['nullable','image', 'max:2048'],
@@ -34,7 +34,7 @@ class StoreProjectRequest extends FormRequest
     }
     public function message(){
         return  [
-            'title.unique'=> 'il titolo deve essere unico',
+            'title.unique'=> 'il titolo non può essere duplicato',
             'title.required'=> 'il titolo è obbligatorio',
             'title.max'=> 'massimo 100 caratteri',
             'title.min'=> 'minimo 5 caratteri',

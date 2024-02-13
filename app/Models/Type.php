@@ -10,6 +10,7 @@ class Type extends Model
     use HasFactory;
     protected $guarded = ['slug'];
     
+     // collegamento projects
     public function projects(){
         return $this->hasMany(Project::class);
     }

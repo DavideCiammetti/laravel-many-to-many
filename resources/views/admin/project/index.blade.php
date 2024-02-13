@@ -53,11 +53,14 @@
                 <td>
                     {{ $projects->staff }}
                 </td>
+                {{-- button show, update, delete --}}
                 <td colspan="2" class="table-active">
                     <div class=" d-flex flex-column align-items-center btn-group" role="group" aria-label="Basic mixed styles example">
+                        {{-- show --}}
                         <button type="submit" class="font-s-12-w-60 border-0 text-bg-primary mb-1">
                             <a class="text-black nav-link " href="{{ route('admin.projects.show', $projects->slug) }}">Info</a>
                         </button>
+                        {{-- delete --}}
                         <div>
                             <form action="{{route('admin.projects.destroy', $projects->slug)}}" method="POST" class="mb-2">
                                 @csrf
@@ -65,6 +68,7 @@
                                 <button type="submit" class="font-s-12-w-60 border-0 bg-danger">Delete</button>
                             </form>
                           </div>
+                          {{-- update --}}
                         <button type="submit" class="font-s-12-w-60 border-0 text-bg-warning">
                             <a class="text-black nav-link "href="{{ route('admin.projects.edit',  $projects->slug) }}">Update</a>
                         </button>

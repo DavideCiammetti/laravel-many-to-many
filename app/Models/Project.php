@@ -10,11 +10,13 @@ class Project extends Model
     use HasFactory;
 
     protected $guarded = ['slug', 'tecnologies', 'img'];
-
+    
+    // collegamento type
     public function type(){
         return $this->belongsTo(Type::class);
     }
 
+    // collegamneto teconologies
     public function tecnologies(){
         return $this->belongsToMany(Tecnology::class);
     }

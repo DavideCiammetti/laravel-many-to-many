@@ -28,11 +28,6 @@
                     <label for="staffInput" class="border rounded">Collaborators</label>
                     <input type="text" name="staff" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded" id="staffInput" value="{{$project->staff}}" placeholder="collaborators">
                 </div>
-                {{-- img --}}
-                {{-- <div class="mb-1">
-                    <label for="imageInput" class="border rounded">Immage</label>
-                    <input type="text" name="img" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded @error('img') is-invalid @enderror" value="{{$project->img}}" id="imageInput" placeholder="img">
-                </div> --}}
                 <div class="mb-1">
                     <label for="formFile" class="border rounded">Immage</label>
                     <input class=" col-8 border-danger-b rounded @error('img') is-invalid @enderror" name="img" value="{{$project->img}}" type="file" id="formFile" placeholder="choose img">
