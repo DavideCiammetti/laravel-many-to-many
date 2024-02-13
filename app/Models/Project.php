@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['slug', 'tecnologies', 'img'];
+    protected $guarded = ['slug', 'technologies', 'img'];
     
     // collegamento type
     public function type(){
@@ -17,7 +17,7 @@ class Project extends Model
     }
 
     // collegamneto teconologies
-    public function tecnologies(){
-        return $this->belongsToMany(Tecnology::class);
+    public function technologies(){
+        return $this->belongsToMany(Technology::class);
     }
 }

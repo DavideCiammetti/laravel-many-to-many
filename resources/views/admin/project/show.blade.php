@@ -21,11 +21,11 @@
             </div>
             <hr class="border border-danger border-2 opacity-100">
             <div>
-                <p>tecnologies: </p>
+                <p>technologies: </p>
                 <ul>
-                    @foreach ($project->tecnologies as $tecnology)
+                    @foreach ($project->technologies as $technology)
                         <li>
-                            {{$tecnology->title}}
+                            {{$technology->title}}
                         </li>
                     @endforeach
                 </ul>

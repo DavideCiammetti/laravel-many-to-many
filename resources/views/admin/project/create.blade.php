@@ -43,16 +43,16 @@
                 @endforeach
             </select>
         </div>
-        {{-- tecnologies --}}
+        {{-- technologies --}}
        <div class="mb-3">
             <div>
-                <p class="fs-5 text-black">Tecnologies</p>
+                <p class="fs-5 text-black">Technologies</p>
             </div>
-            @foreach ($tecnology as $tecnologies)
+            @foreach ($technology as $technologies)
                 <div class="form-check form-check-inline">
-                        <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$tecnologies->title}}</label>
-                        <input class="form-check-input" type="checkbox" name="tecnologies[]" value="{{$tecnologies->id}}" 
-                        {{in_array($tecnologies->id, old('tecnologies', []))? 'checked': ''}}>
+                    <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$technologies->title}}</label>
+                    <input class="form-check-input" type="checkbox" name="technologies[]" value="{{$technologies->id}}" 
+                    {{in_array($technologies->id, old('technologies', []))? 'checked': ''}}>
                 </div>
             @endforeach
        </div>

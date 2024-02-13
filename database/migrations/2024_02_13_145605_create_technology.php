@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+   /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('project_tecnology', function (Blueprint $table) {
-            $table->foreignId('project_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('tecnology_id')->constrained()->cascadeOnDelete();
-            $table->primary(['project_id', 'tecnology_id']);
+        Schema::create('technologies', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 40)->unique();
+            $table->string('slug', 50);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_tecnology');
+        Schema::dropIfExists('technologies');
     }
 };

@@ -29,7 +29,7 @@ class StoreProjectRequest extends FormRequest
             'img'=> ['nullable','image', 'max:2048'],
             'slug'=> 'nullable',
             'type_id'=> ['nullable', 'exists:types,id'],
-            'tecnologies'=> ['nullable', 'exists:tecnologies,id'],
+            'technologies'=> ['nullable', 'exists:technologies,id'],
         ];
     }
     public function message(){
@@ -40,7 +40,7 @@ class StoreProjectRequest extends FormRequest
             'title.min'=> 'minimo 5 caratteri',
             'img.max'=> 'il file puo pesare messimo 2 mega',
             'type_id.exists'=> 'il campo type è errato',
-            'tecnologies.exists'=> 'il campo tecnology è errato',
+            'technologies.exists'=> 'il campo tecnology è errato',
         ];
     }
 }

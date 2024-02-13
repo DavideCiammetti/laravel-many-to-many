@@ -28,6 +28,7 @@
                     <label for="staffInput" class="border rounded">Collaborators</label>
                     <input type="text" name="staff" class="ps-2 pt-1 pb-1 col-8 border-danger-b rounded" id="staffInput" value="{{$project->staff}}" placeholder="collaborators">
                 </div>
+                {{-- immagine --}}
                 <div class="mb-1">
                     <label for="formFile" class="border rounded">Immage</label>
                     <input class=" col-8 border-danger-b rounded @error('img') is-invalid @enderror" name="img" value="{{$project->img}}" type="file" id="formFile" placeholder="choose img">
@@ -45,22 +46,24 @@
                     @endforeach
                 </select>
             </div>
-            {{-- check tecnologies --}}
+            {{-- check technologies --}}
             <div class="mb-3">
                 <div>
-                    <p class="fs-5 text-black">Tecnologies</p>
+                    <p class="fs-5 text-black">Technologies</p>
                 </div>
-                @foreach ($tecnology as $tecnologies)
+                @foreach ($technology as $technologies)
+                {{-- @dd($technologies) --}}
                     <div class="form-check form-check-inline">
                         @if ($errors->any())
-                            <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$tecnologies->title}}</label>
-                            <input class="form-check-input" type="checkbox" name="tecnologies[]" value="{{$tecnologies->id}}" 
-                            {{in_array($tecnologies->id, old('tecnologies', []))? 'checked': ''}}>
+                            <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$technologies->title}}</label>
+                            <input class="form-check-input" type="checkbox" name="technologies[]" value="{{$technologies->id}}" 
+                            {{in_array($technologies->id, old('technologies', []))? 'checked': ''}}>
                         @else
-                            <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$tecnologies->title}}</label>
-                            <input class="form-check-input" type="checkbox" name="tecnologies[]" value="{{$tecnologies->id}}" 
-                            {{$project->tecnologies->contains($tecnologies->id)? 'checked': ''}}>
+                            <label class="form-check-label text-white d-inline" for="inlineCheckbox2">{{$technologies->title}}</label>
+                            <input class="form-check-input" type="checkbox" name="technologies[]" value="{{$technologies->id}}" 
+                            {{$project->technologies->contains($technologies->id)? 'checked': ''}}>
                         @endif
+                        {{-- @dd($technologies) --}}
                     </div>
                 @endforeach
            </div>

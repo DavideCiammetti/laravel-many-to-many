@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
-use App\Models\Tecnology;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,8 +29,8 @@ class ProjectController extends Controller
     public function create()
     {
         $type = Type::all();
-        $tecnology = Tecnology::all();
-        return view('admin.project.create', compact('type', 'tecnology'));
+        $technology = Technology::all();
+        return view('admin.project.create', compact('type', 'technology'));
     }
 
     /**
@@ -44,13 +44,13 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::of($project->title)->slug('-');
         // gestione immagini 
-        $project->img = Storage::put('uploads',$data['img']);
+        // $project->img = Storage::put('uploads',$data['img']);
 
         $project->save();
         
-        // prendo tecnologies se settato
-        if(isset($data['tecnologies'])){
-            $project->tecnologies()->sync($data['tecnologies']);
+        // prendo technologies se settato
+        if(isset($data['technologies'])){
+            $project->technologies()->sync($data['technologies']);
         }
         return redirect()->route('admin.projects.show', $project->slug);
     }
@@ -60,6 +60,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         return view('admin.project.show', compact('project'));
     }
 
@@ -69,8 +70,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $type = Type::all();
-        $tecnology = Tecnology::all();
-        return view('admin.project.edit', compact('project', 'type', 'tecnology'));
+        $technology = Technology::all();
+        // dd($technology);
+        return view('admin.project.edit', compact('project', 'type', 'technology'));
     }
 
     /**
@@ -81,14 +83,14 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title'], '-');
         // gestione immagini 
-        $project->img = Storage::put('uploads',$data['img']);
+        // $project->img = Storage::put('uploads',$data['img']);
         $project->update($data);
         
-        // aggiorno elemento tecnologies
-        if(isset($data['tecnologies'])){
-            $project->tecnologies()->sync($data['tecnologies']);
+        // aggiorno elemento technologies
+        if(isset($data['technologies'])){
+            $project->technologies()->sync($data['technologies']);
         }else{
-            $project->tecnologies()->sync([]);
+            $project->technologies()->sync([]);
         }
         return redirect()->route('admin.projects.show', $project);
     }
@@ -98,8 +100,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        // elimino elemento tecnologies
-        $project->tecnologies()->sync([]);
+        // elimino elemento technologies
+        $project->technologies()->sync([]);
         // elimino progetto
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "$project->title");
